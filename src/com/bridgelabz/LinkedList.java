@@ -1,7 +1,4 @@
 package com.bridgelabz;
-
-import java.util.HashMap;
-
 public class LinkedList<T> {
     Node<T> head;
 
@@ -10,8 +7,11 @@ public class LinkedList<T> {
         if (head == null) {
             head = newNode;
         } else {
-            newNode.next = head;
-            head = newNode;
+            Node<T> current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
         }
     }
 
@@ -23,4 +23,4 @@ public class LinkedList<T> {
         }
         System.out.print("null");
     }
-}
+    }
