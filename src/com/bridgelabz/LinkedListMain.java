@@ -5,9 +5,12 @@ public class LinkedListMain {
         LinkedList<Integer> list = new LinkedList<>();
         list.add(56);
         list.add(30);
+        list.add(40);
         list.add(70);
-        Node<Integer> node = list.search(30);
-        list.insertAfter(node, 40);
+        Node<Integer> node = list.search(40);
+        list.delete(40);
         list.printList();
+        System.out.println();
+        System.out.println("Size: " + list.size());
     }
 }

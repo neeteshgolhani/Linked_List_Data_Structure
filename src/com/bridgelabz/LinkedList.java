@@ -35,6 +35,33 @@ public class LinkedList<T> {
         node.next = newNode;
     }
 
+    public void delete(T key) {
+        Node<T> prev = null;
+        Node<T> current = head;
+        while (current != null) {
+            if (current.data.equals(key)) {
+                if (prev == null) {
+                    head = current.next;
+                } else {
+                    prev.next = current.next;
+                }
+                return;
+            }
+            prev = current;
+            current = current.next;
+        }
+    }
+
+    public int size() {
+        int count = 0;
+        Node<T> current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+        return count;
+    }
+
     public void printList() {
         Node<T> current = head;
         while (current != null) {
@@ -43,15 +70,18 @@ public class LinkedList<T> {
         }
         System.out.print("null");
     }
-    public void testInsertAfter() {
+
+    public void testDelete() {
         LinkedList<Integer> list = new LinkedList<>();
         list.add(56);
         list.add(30);
+        list.add(40);
         list.add(70);
-        Node<Integer> node = list.search(30);
-        list.insertAfter(node, 40);
+        Node<Integer> node = list.search(40);
+        list.delete(40);
         list.printList();
         Object Assertions = null;
-        Assertions.equals(40);
+        Assertions.toString();
+        Assertions.equals(3);
     }
 }
