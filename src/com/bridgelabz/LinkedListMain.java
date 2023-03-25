@@ -6,10 +6,11 @@ public class LinkedListMain {
 
         // Adding elements to the Linked List
         list.add(56);
+        list.add(30);
         list.add(70);
 
-        // Inserting element 30 between 56 and 70
-        list.insert(30, 1);
+        // Removing the first element from the Linked List
+        list.pop();
 
         // Printing the Linked List
         list.printList();

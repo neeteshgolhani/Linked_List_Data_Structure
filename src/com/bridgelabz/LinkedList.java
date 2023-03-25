@@ -30,6 +30,12 @@ public class LinkedList<T> {
         }
     }
 
+    public void pop() {
+        if (head == null) {
+            return;
+        }
+        head = head.next;
+    }
     public void printList() {
         Node<T> current = head;
         while (current != null) {
