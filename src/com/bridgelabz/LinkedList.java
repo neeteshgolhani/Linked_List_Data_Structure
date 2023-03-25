@@ -2,7 +2,7 @@ package com.bridgelabz;
 public class LinkedList<T> {
     Node<T> head;
 
-    public void add (T data){
+    public void add(T data) {
         Node<T> newNode = new Node<>(data);
         if (head == null) {
             head = newNode;
@@ -15,36 +15,18 @@ public class LinkedList<T> {
         }
     }
 
-    public void insert (T data,int position){
-        Node<T> newNode = new Node<>(data);
-        if (position == 0) {
-            newNode.next = head;
-            head = newNode;
-        } else {
-            Node<T> current = head;
-            for (int i = 0; i < position - 1; i++) {
-                current = current.next;
+    public Node<T> search(T key) {
+        Node<T> current = head;
+        while (current != null) {
+            if (current.data.equals(key)) {
+                return current;
             }
-            newNode.next = current.next;
-            current.next = newNode;
+            current = current.next;
         }
+        return null;
     }
 
-    public void popLast () {
-        if (head == null) {
-            return;
-        } else if (head.next == null) {
-            head = null;
-        } else {
-            Node<T> current = head;
-            while (current.next.next != null) {
-                current = current.next;
-            }
-            current.next = null;
-        }
-    }
-
-    public void printList () {
+    public void printList() {
         Node<T> current = head;
         while (current != null) {
             System.out.print(current.data + "->");
@@ -52,4 +34,12 @@ public class LinkedList<T> {
         }
         System.out.print("null");
     }
-}
+    public void testSearch() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(56);
+        list.add(30);
+        list.add(70);
+        Object Assertion = null;
+        Assertion.equals(30);
+    }
+    }
