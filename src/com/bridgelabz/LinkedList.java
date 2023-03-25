@@ -26,6 +26,15 @@ public class LinkedList<T> {
         return null;
     }
 
+    public void insertAfter(Node<T> node, T data) {
+        if (node == null) {
+            return;
+        }
+        Node<T> newNode = new Node<>(data);
+        newNode.next = node.next;
+        node.next = newNode;
+    }
+
     public void printList() {
         Node<T> current = head;
         while (current != null) {
@@ -34,12 +43,15 @@ public class LinkedList<T> {
         }
         System.out.print("null");
     }
-    public void testSearch() {
+    public void testInsertAfter() {
         LinkedList<Integer> list = new LinkedList<>();
         list.add(56);
         list.add(30);
         list.add(70);
-        Object Assertion = null;
-        Assertion.equals(30);
+        Node<Integer> node = list.search(30);
+        list.insertAfter(node, 40);
+        list.printList();
+        Object Assertions = null;
+        Assertions.equals(40);
     }
-    }
+}

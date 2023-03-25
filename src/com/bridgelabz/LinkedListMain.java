@@ -7,10 +7,7 @@ public class LinkedListMain {
         list.add(30);
         list.add(70);
         Node<Integer> node = list.search(30);
-        if (node != null) {
-            System.out.println("Node found: " + node.data);
-        } else {
-            System.out.println("Node not found.");
-        }
-        }
+        list.insertAfter(node, 40);
+        list.printList();
     }
+}
