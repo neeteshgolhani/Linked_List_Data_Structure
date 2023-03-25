@@ -9,10 +9,10 @@ public class LinkedListMain {
         list.add(30);
         list.add(70);
 
-        // Removing the first element from the Linked List
-        list.pop();
+        // Removing the last element from the Linked List
+        list.popLast();
 
         // Printing the Linked List
         list.printList();
+        }
     }
-}
