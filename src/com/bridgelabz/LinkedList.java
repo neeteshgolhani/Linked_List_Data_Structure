@@ -1,87 +1,49 @@
 package com.bridgelabz;
-public class LinkedList<T> {
-    Node<T> head;
+     class SortedLinkedList<T extends Comparable<T>> {
+        private Node head;
+        private int size;
 
-    public void add(T data) {
-        Node<T> newNode = new Node<>(data);
-        if (head == null) {
-            head = newNode;
-        } else {
-            Node<T> current = head;
-            while (current.next != null) {
+        public SortedLinkedList() {
+            this.head = null;
+            this.size = 0;
+        }
+
+        private class Node {
+            T data;
+            Node next;
+
+            public Node(T data) {
+                this.data = data;
+                this.next = null;
+            }
+        }
+
+        public void add(T data) {
+            Node newNode = new Node(data);
+            if (head == null || data.compareTo(head.data) < 0) {
+                newNode.next = head;
+                head = newNode;
+            } else {
+                Node current = head;
+                while (current.next != null && data.compareTo(current.next.data) > 0) {
+                    current = current.next;
+                }
+                newNode.next = current.next;
+                current.next = newNode;
+            }
+            size++;
+        }
+
+        public int size() {
+            return size;
+        }
+
+        public void printList() {
+            Node current = head;
+            while (current != null) {
+                System.out.print(current.data + " ");
                 current = current.next;
             }
-            current.next = newNode;
+            System.out.println();
         }
     }
-
-    public Node<T> search(T key) {
-        Node<T> current = head;
-        while (current != null) {
-            if (current.data.equals(key)) {
-                return current;
-            }
-            current = current.next;
-        }
-        return null;
-    }
-
-    public void insertAfter(Node<T> node, T data) {
-        if (node == null) {
-            return;
-        }
-        Node<T> newNode = new Node<>(data);
-        newNode.next = node.next;
-        node.next = newNode;
-    }
-
-    public void delete(T key) {
-        Node<T> prev = null;
-        Node<T> current = head;
-        while (current != null) {
-            if (current.data.equals(key)) {
-                if (prev == null) {
-                    head = current.next;
-                } else {
-                    prev.next = current.next;
-                }
-                return;
-            }
-            prev = current;
-            current = current.next;
-        }
-    }
-
-    public int size() {
-        int count = 0;
-        Node<T> current = head;
-        while (current != null) {
-            count++;
-            current = current.next;
-        }
-        return count;
-    }
-
-    public void printList() {
-        Node<T> current = head;
-        while (current != null) {
-            System.out.print(current.data + "->");
-            current = current.next;
-        }
-        System.out.print("null");
-    }
-
-    public void testDelete() {
-        LinkedList<Integer> list = new LinkedList<>();
-        list.add(56);
-        list.add(30);
-        list.add(40);
-        list.add(70);
-        Node<Integer> node = list.search(40);
-        list.delete(40);
-        list.printList();
-        Object Assertions = null;
-        Assertions.toString();
-        Assertions.equals(3);
-    }
-}
